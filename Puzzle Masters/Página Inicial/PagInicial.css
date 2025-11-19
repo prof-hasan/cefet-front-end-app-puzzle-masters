@@ -1,0 +1,287 @@
+html, body{
+    overflow: hidden;
+}
+body {
+    display: grid;
+    height: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 0px;
+    background-image: url(PagInicial-img/PagInicial-Fundo.png);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+    
+#cabecalho {
+    grid-column: span 4 / span 4;  padding: 0% 10%;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0% 15%;
+
+}
+
+#blank1 {
+    grid-row: span 3 / span 3;
+    grid-row-start: 2;
+}
+
+#boxLogo {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-row-start: 2;
+}
+
+#blank2 {
+    grid-row: span 3 / span 3;
+    grid-column-start: 4;
+    grid-row-start: 2;
+}
+
+#boxDeBotoes {
+    grid-column: span 2 / span 2;
+    grid-column-start: 2;
+    grid-row-start: 4;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#Left-corner {
+    position: relative;
+    grid-column: span 2 / span 2;
+    grid-row-start: 5;
+    display: flex;
+    justify-content: center;
+    bottom: 30px;
+}
+
+#Right-corner {
+    grid-column: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 5;
+}
+#logo{
+  display: block;
+  margin: auto;
+  width: 70%;
+}    
+#listaDePuzzles, #jogar{
+    background-color: #3ACFC5;
+    width: 35%;
+    height: 50%;
+    border: solid 4px #011423;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px;
+    color:#011423;
+    position: relative;       
+    top: 0;
+    transition: top 0.5ms ease;
+    box-shadow: 0px 6px 0px #011423;
+    
+}
+
+button:hover{
+    top: -3px !important;
+     box-shadow: 0px 8px 0px #011423 !important ;
+}
+
+button:active{
+    top: 3px !important;
+    box-shadow: 0px 2px 0px #011423 !important ;             
+    background-color: #FCB62B !important;
+}
+
+
+#cefetLogo{
+    width: 15%;
+}
+
+.miniButton{
+    width: 10%;
+    height: 60%;
+    background-color: #3ACFC5;
+    border: solid 4px #011423;
+    position: relative;
+    box-shadow: 0px 6px 0px #011423 ;
+}
+
+.miniButton img{
+    width: 90%;
+}
+
+#buttonTV{
+    width: 13%;
+    position: relative;
+    right: 80px;
+}
+
+.desativado{
+display: none;
+}
+
+#menu-puzzles{
+    position: absolute;
+    width: 80%;
+    height: 90%;
+    background-color: #3ACFC5;
+    align-self: center;
+    justify-self: center;
+    bottom: 30px;
+    border: solid 10px #011423;
+}
+
+
+#estatica {
+    pointer-events: none; 
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#estatica::before, #estatica::after {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-image: 
+        linear-gradient(transparent 93%, rgba(255,255,255,0.4) 100%);
+    background-size: 20px 20px;
+    animation: oldTV 4s linear infinite;
+}
+
+
+#estatica::after {
+    animation-delay: -0.35s; 
+}
+
+@keyframes oldTV {
+    from {
+        transform: translateY(0);
+    }
+    to {
+        transform: translateY(100%);
+    }
+}
+
+
+@media (max-width: 1170px) {
+
+   body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        gap: 20px;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    #Left-corner{
+        position: static;
+    }
+
+    #cabecalho {
+        padding: 0 5%;
+    }
+
+    #cefetLogo {
+        width:15%
+    }
+
+    #sound {
+        width: 12%;
+    }
+    #buttonTV {
+        width: 20%;
+        position: static;
+    }
+
+    #boxLogo {
+        grid-column: span 2;
+        grid-row-start: auto;
+    }
+
+    #logo {
+        width: 80%;
+    }
+
+    #boxDeBotoes {
+        grid-column: span 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        width: 50%;
+    }
+
+    #listaDePuzzles, #jogar {
+        width: 100%;
+        height: auto;
+        font-size: 40px;
+    }
+}
+
+
+
+@media (max-width: 480px) {
+
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding-bottom: 40px;
+        gap: 15px;
+        background-attachment: fixed;
+        background-size: cover;
+
+
+        #Left-corner{
+        position: static;
+    }
+
+    #cabecalho {
+        width: 100%;
+        padding: 10px 20px;
+    }
+
+    #cefetLogo {
+        width: 35%;
+    }
+
+    #sound {
+        width: 20% !important;
+    }
+
+    #boxLogo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
+    }
+
+    #logo {
+        width: 80%;
+    }
+
+    #boxDeBotoes {
+        width: 100%;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    #listaDePuzzles, #jogar {
+        width: 70%;
+        height: 80px;
+        font-size: 36px;
+    }
+}
+}
