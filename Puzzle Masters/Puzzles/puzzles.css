@@ -1,0 +1,115 @@
+body {
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 30px;
+    background-image: url(../PagInicial/PagInicial-img/PagInicial-Fundo.png);
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-size: cover;
+    overflow: hidden;
+}
+
+
+#puzzle {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    background-color: black;
+    gap: 0px;
+    width: 90vmin;
+    height: fit-content;
+}
+
+.peca {
+    width: 100.5%;
+    height: 100.5%;
+    object-fit: cover;
+    transition: transform 200ms ease;
+}
+
+
+#swap {
+    background-color: #3ACFC5;
+    width: 30%;
+    height: 10%;
+    border: solid 4px #011423;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px;
+    color: #011423;
+    transition: top 0.5ms ease;
+    box-shadow: 0px 6px 0px #011423;
+    position: relative;
+}
+
+.selecionado {
+    transform: scale(0.97);
+}
+
+.peca:hover {
+    transform: scale(1.05);
+}
+
+#chave {
+    position: absolute;
+    display: none;
+}
+
+
+button:active {
+    top: 3px !important;
+    box-shadow: 0px 2px 0px #011423 !important;
+    background-color: #FCB62B !important;
+}
+
+
+.miniButton {
+    width: 7%;
+    height: 12%;
+    background-color: #3ACFC5;
+    border: solid 4px #011423;
+    position: relative;
+    left: 40%;
+    box-shadow: 0px 6px 0px #011423;
+    margin-right: 20px;
+}
+
+.miniButton img {
+    height: 80%;
+}
+
+@media (max-width: 1030px) {
+
+    #swap{
+        width: 40%;
+    }
+    #sound{
+        width: 12%;
+    }
+}
+
+@media (max-width: 621px) {
+    #swap{
+        width: 70%;
+    }
+
+    #sound{
+        width: 100px;
+        bottom: 10%;
+    }
+
+    #puzzle{
+        width: 100vmin;
+    }
+
+#sound:active {
+    top: -10% !important;
+    box-shadow: 0px 2px 0px #011423 !important;
+    background-color: #FCB62B !important;
+}
+}
