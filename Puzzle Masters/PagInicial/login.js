@@ -1,4 +1,4 @@
-import { buscarUsuario, criarUsuario } from "./firebase.js";
+import { buscarUsuario, criarUsuario, buscarRanking } from "./firebase.js";
 
 async function entrar() {
   let user = document.querySelector("#usuario").value.trim();
@@ -118,3 +118,52 @@ document.querySelector("#exit").addEventListener("click", () => {
   localStorage.removeItem("pontuacao");
   document.querySelector("#Tela-login").classList.remove("desativado");
 });
+
+let ranking = [];
+
+async function montarRanking() {
+  let dados = await buscarRanking();
+
+  ranking = dados.filter(user => 
+    user.nome && 
+    user.nome.trim() !== "" && 
+    user.pontuacao !== undefined
+  );
+
+  ranking.sort((a, b) => b.pontuacao - a.pontuacao);
+
+  mostrarRanking();
+}
+
+
+function mostrarRanking() {
+  const ul = document.querySelector("#rankingPlayers");
+  ul.innerHTML = "";
+
+  const LIMITE = 5; 
+
+  for (let i = 0; i < LIMITE; i++) {
+
+    const li = document.createElement("li");
+
+    if (ranking[i]) {
+      li.innerHTML = `
+        <span>${i + 1}º ${ranking[i].nome}</span>
+        <span class="pontos">${ranking[i].pontuacao}</span>
+      `;
+    } 
+    else {
+      li.innerHTML = `
+        <span>${i + 1}º ----------</span>
+        <span class="pontos">--</span>
+      `;
+    }
+
+    ul.appendChild(li);
+  }
+}
+
+
+let botaoRanking = document.querySelector("#abreRanking");
+
+botaoRanking.addEventListener("click", montarRanking);
