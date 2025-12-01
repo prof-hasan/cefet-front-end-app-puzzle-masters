@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Puzzle 1</title>
+    <link rel="stylesheet" href="puzzles.css">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,800;1,500&family=Jersey+10&family=VT323&display=swap"
+        rel="stylesheet">
+</head>
+
+
+<body>
+
+    <div id="loader" class="desativado"><img src="../PagInicial/PagInicial-img/PagInicial-load.webp" alt="carregamento"
+            loading="lazy">
+        <h1>Carregando</h1>
+    </div>
+
+    <div class="puzzle" id="P1">
+        <img src="P1-img/P1 (1).png" class="peca" alt="">
+        <img src="P1-img/P1 (2).png" class="peca" alt="">
+        <img src="P1-img/P1 (3).png" class="peca" alt="">
+        <img src="P1-img/P1 (4).png" class="peca" alt="">
+        <img src="P1-img/P1 (5).png" class="peca" alt="">
+        <img src="P1-img/P1 (6).png" class="peca" alt="">
+        <img src="P1-img/P1 (7).png" class="peca" alt="">
+        <img src="P1-img/P1 (8).png" class="peca" alt="">
+        <img src="P1-img/P1 (9).png" class="peca" alt="">
+
+    </div>
+    <div id="botoes">
+        <button class="buttonSetting" onclick="carregarPagina('../PagInicial/Pagina-Inicial.html')"><img src="Puzzles-Voltar.png" class="Logo"
+                alt="botão de voltar"></button>
+        <button id="swap">TROCAR</button>
+        <button class="buttonSetting" id="sound"><img src="../PagInicial/PagInicial-img/PagInicial-Mute.png" 
+            id="soundLogo" class="Logo"alt="botão de som"></button>
+    </div>
+    <input type="text" value="P1" id="chave">
+
+
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <script type="module" src="../funcaopuzzle.js"></script>
+
+</body>
+
+</html>
