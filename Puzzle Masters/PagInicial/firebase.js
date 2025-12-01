@@ -55,3 +55,17 @@ export async function salvarPontuacao(nome, novaPontuacao) {
 
   return true;
 }
+
+export async function buscarRanking() {
+  const usuariosRef = collection(db, "usuarios");
+  const snapshot = await getDocs(usuariosRef);
+
+  let ranking = [];
+
+  snapshot.forEach(doc => {
+    ranking.push(doc.data());
+  });
+
+  return ranking;
+}
+
