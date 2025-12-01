@@ -391,6 +391,10 @@ button:active {
     border-radius: 10%;
 }
 
+#primeiro{
+    background-color: #FCB62B;
+    border-radius: 10px;
+}
 #estatica {
     pointer-events: none;
     position: fixed;
