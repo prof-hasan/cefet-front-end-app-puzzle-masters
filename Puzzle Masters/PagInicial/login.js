@@ -146,6 +146,10 @@ function mostrarRanking() {
 
     const li = document.createElement("li");
 
+    if (i === 0 && ranking[0]) {
+    li.id = "primeiro";
+  }
+
     if (ranking[i]) {
       li.innerHTML = `
         <span>${i + 1}º ${ranking[i].nome}</span>
