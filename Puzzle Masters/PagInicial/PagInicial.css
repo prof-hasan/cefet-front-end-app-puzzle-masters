@@ -220,7 +220,10 @@ button:active {
     height: 100px;
     position: relative;
     right: 80px;
+}
 
+#buttonTV img {
+    width: 70%;
 }
 
 .desativado {
@@ -286,6 +289,7 @@ button:active {
     margin-left: 2.3%;
     height: auto;
     width: 100%;
+    gap: 20px;
 }
 
 #P1,
