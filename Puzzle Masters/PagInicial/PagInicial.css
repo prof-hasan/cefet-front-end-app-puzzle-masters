@@ -391,6 +391,15 @@ button:active {
     border-radius: 10%;
 }
 
+.nome {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+
+
 #primeiro{
     background-color: #FCB62B;
     border-radius: 10px;
