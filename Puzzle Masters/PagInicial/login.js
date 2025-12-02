@@ -40,8 +40,8 @@ async function entrar() {
       customClass: { popup: "retro-popup" }
     });
 
-    localStorage.setItem("usuarioLogado", user);
-    localStorage.setItem("pontuacao", 0);
+    sessionStorage.setItem("usuarioLogado", user);
+    sessionStorage.setItem("pontuacao", 0);
 
   }
 
@@ -57,8 +57,8 @@ async function entrar() {
       customClass: { popup: "retro-popup" }
     });
 
-    localStorage.setItem("usuarioLogado", user);
-    localStorage.setItem("pontuacao", usuario.pontuacao);
+    sessionStorage.setItem("usuarioLogado", user);
+    sessionStorage.setItem("pontuacao", usuario.pontuacao);
 
   }
 
@@ -97,16 +97,16 @@ document.addEventListener("keydown", e => {
 
 
 window.addEventListener("load", async () => {
-  let user = localStorage.getItem("usuarioLogado");
+  let user = sessionStorage.getItem("usuarioLogado");
 
   if (user) {
     const usuario = await buscarUsuario(user);
     if (!usuario) {
-      localStorage.clear();
+      sessionStorage.clear();
       return;
     }
 
-    localStorage.setItem("pontuacao", usuario.pontuacao);
+    sessionStorage.setItem("pontuacao", usuario.pontuacao);
     document.querySelector("#Tela-login").classList.add("desativado");
   }
 });
@@ -114,8 +114,8 @@ window.addEventListener("load", async () => {
 
 
 document.querySelector("#exit").addEventListener("click", () => {
-  localStorage.removeItem("usuarioLogado");
-  localStorage.removeItem("pontuacao");
+  sessionStorage.removeItem("usuarioLogado");
+  sessionStorage.removeItem("pontuacao");
   document.querySelector("#Tela-login").classList.remove("desativado");
 });
 
