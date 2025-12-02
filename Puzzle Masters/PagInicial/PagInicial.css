@@ -11,7 +11,7 @@ body {
     grid-template-rows: repeat(5, 1fr);
     gap: 0px;
     background-image: url(PagInicial-img/PagInicial-Fundo.png);
-    background-attachment: scroll;
+    background-attachment: fixed;
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -287,9 +287,9 @@ button:active {
     grid-template-rows: repeat(4, 110px);
     margin-top: 5%;
     margin-left: 2.3%;
-    height: auto;
+    height: 80%;
     width: 100%;
-    gap: 20px;
+    gap: 30px;
 }
 
 #P1,
