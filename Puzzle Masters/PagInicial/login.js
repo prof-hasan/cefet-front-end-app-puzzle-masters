@@ -152,7 +152,7 @@ function mostrarRanking() {
 
     if (ranking[i]) {
       li.innerHTML = `
-        <span>${i + 1}º ${ranking[i].nome}</span>
+        <span class="nome">${i + 1}º ${ranking[i].nome}</span>
         <span class="pontos">${ranking[i].pontuacao}</span>
       `;
     } 
@@ -171,3 +171,4 @@ function mostrarRanking() {
 let botaoRanking = document.querySelector("#abreRanking");
 
 botaoRanking.addEventListener("click", montarRanking);
+
