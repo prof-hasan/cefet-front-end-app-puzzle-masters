@@ -79,7 +79,7 @@ troca.addEventListener('click', async () => {
 
         let verificadorDeCorrecao = 0;
 
-        let userLogado = localStorage.getItem("usuarioLogado");
+        let userLogado = sessionStorage.getItem("usuarioLogado");
 
         if (!userLogado) {
             Swal.fire({
@@ -97,7 +97,7 @@ troca.addEventListener('click', async () => {
             return;
         }
 
-        let pontos = Number(localStorage.getItem("pontuacao")) || 0;
+        let pontos = Number(sessionStorage.getItem("pontuacao")) || 0;
 
         if (!userLogado) {
             Swal.fire({
@@ -132,7 +132,7 @@ troca.addEventListener('click', async () => {
         if (verificadorDeCorrecao == 0) {
             pontos += (pecas.length * 4);
             await salvarPontuacao(userLogado, pontos);
-            localStorage.setItem("pontuacao", pontos);
+            sessionStorage.setItem("pontuacao", pontos);
 
 
             await new Promise(resolve => setTimeout(resolve, 100));
