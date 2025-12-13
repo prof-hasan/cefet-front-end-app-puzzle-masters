@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="PagInicial.css">
+  <link rel="icon" href="../PagInicial/PagInicial-img/PagInicial-icon.ico">
+  <title>Puzzle Masters</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,500;0,800;1,500&family=Jersey+10&family=VT323&display=swap"
+    rel="stylesheet">
+</head>
+
+<body>
+  <div id="loader" class="desativado"><img src="PagInicial-img/PagInicial-load.webp" alt="carregamento" loading="lazy">
+    <h1>Carregando</h1>
+  </div>
+
+  <div id="Tela-login">
+    <img src="PagInicial-img/Paginicial-Logo.png" alt="">
+    <section id="registro">
+      <div class="campo">
+        <label for="usuario">Nome de Usuário</label>
+        <input type="text" id="usuario">
+      </div>
+
+      <div class="campo">
+        <label for="senha">Senha</label>
+        <input type="password" id="senha">
+      </div>
+
+    </section>
+    <button id="button-login">Entrar</button>
+  </div>
+
+  <header id="cabecalho">
+    <button class="miniButton" id="exit"><img src="PagInicial-img/Paginicial-Sair.png" id="ExitLogo"
+        alt="botão de sair"></button>
+
+    <button class="miniButton" id="sound"><img src="PagInicial-img/PagInicial-Mute.png" id="soundLogo"
+        alt="botão de som"></button>
+  </header>
+  <div id="blank1"></div>
+  <div id="boxLogo"><img src="PagInicial-img/Paginicial-Logo.png" alt="Logo Puzzle Masters" id="logo"></div>
+  <div id="blank2"></div>
+  <div id="boxDeBotoes">
+    <button id="listaDePuzzles">PUZZLES</button>
+    <button id="abreRanking">RANKING</button>
+  </div>
+  <div id="Left-corner">
+    <button class="miniButton" id="buttonTV"><img src="PagInicial-img/PagInicial-tv.png"
+        alt="deligar estatica"></button>
+  </div>
+  <div id="Right-corner">
+    
+  </div>
+
+  <article class="menu desativado" id="menu-puzzles">
+    <section class="menu-head">
+      <img src="PagInicial-img/PagInical-info.png" id="abrir-info" alt="abrir informações" href="#" onclick="carregarPagina('info.html')">
+
+      <img src="PagInicial-img/PagInicial-Fechar.png" id="fechar-menu" alt="fechar menu">
+      </section>
+    <section id="puzzles">
+      <div id="P1" class="puzzle-frames"><a href="#" onclick="carregarPagina('../Puzzles/P1.html')"><img
+            src="PagInicial-img/PagInicial-P1.jpg" alt="Puzzle 1" loading="lazy"></a></div>
+      <div id="P2" class="puzzle-frames"><a href="#" onclick="carregarPagina('../Puzzles/P2.html')"><img
+            src="PagInicial-img/PagInicial-P2.jpg" alt="Puzzle 2" loading="lazy"></a></div>
+      <div id="P3" class="puzzle-frames"><a href="#" onclick="carregarPagina('../Puzzles/P3.html')"><img
+            src="PagInicial-img/PagInicial-P3.jpg" alt="Puzzle 3" loading="lazy"></a></div>
+      <div id="P4" class="puzzle-frames"><a href="#" onclick="carregarPagina('../Puzzles/P4.html')"><img
+            src="PagInicial-img/PagInicial-P4.jpg" alt="Puzzle 4" loading="lazy"></a></div>
+      <div id="P5" class="puzzle-frames"><a href="#" onclick="carregarPagina('../Puzzles/P5.html')"><img
+            src="PagInicial-img/PagInicial-P5.jpg" alt="Puzzle 5" loading="lazy"></a></div>
+      <div id="P6" class="puzzle-frames"><a href="#" onclick="carregarPagina('../Puzzles/P6.html')"><img
+            src="PagInicial-img/PagInicial-P6.jpg" alt="Puzzle 6" loading="lazy"></a></div>
+      <div id="P7" class="puzzle-frames"><a href="#" onclick="carregarPagina('../Puzzles/P7.html')"><img
+            src="PagInicial-img/PagInicial-P7.jpg" alt="Puzzle 7" loading="lazy"></a></div>
+      <div id="P8" class="puzzle-frames"><a href="#" onclick="carregarPagina('../Puzzles/P8.html')"><img
+            src="PagInicial-img/PagInicial-P8.jpg" alt="Puzzle 8" loading="lazy"></a></div>
+    </section>
+
+
+  </article>
+
+  <article id="ranking" class="menu desativado">
+
+    <section class="menu-head">
+      <img src="PagInicial-img/PagInicial-Fechar.png" id="fechar-ranking" alt="fechar ranking">
+    </section>
+    <ul id="rankingPlayers">
+    </ul>
+
+  </article>
+
+  <div id="bloqueio-clique" class="desativado"></div>
+  <div id="estatica"></div>
+
+  <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/3.2.1/anime.min.js"></script>
+  <script src="PagInicial.js"></script>
+
+  <script type="module" src="firebase.js"></script>
+  <script type="module" src="login.js"></script>
+</body>
+
+</html>
