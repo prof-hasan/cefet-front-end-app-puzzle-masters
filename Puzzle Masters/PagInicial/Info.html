@@ -17,7 +17,13 @@
 
 <body id="body-info">
 
+  <div id="loader" class="desativado"><img src="PagInicial-img/PagInicial-load.webp" alt="carregamento" loading="lazy">
+    <h1>Carregando</h1>
+  </div>
+
   <div id="descricao">
+    <button class="buttonSetting" onclick="carregarPagina('Pagina-Inicial.html')"><img src="../Puzzles/Puzzles-Voltar.png" class="Logo"
+      alt="botão de voltar"></button>
    <h1>Informações</h1>
    <p>Criador: Mateus Conrado França da Mata</p>
    <p>Eu quis criar esse site porque dentre as ideias para esse projeto, a que mais me atraiu dfoi a ideia de criar um quebra 
@@ -28,8 +34,30 @@
     fliperamas enquanto buscam manter-se no topo do ranking. O meu objetivo com esse jogo foi passar o mesmo sentimento. 
    </p>
    <p>
-    No Puzzle Masters os usuários podem jogar os diferentes quebra-cabeças em pixel art, estilo recorrente em toda a interface do jogo 
+    No Puzzle Masters os usuários podem jogar os diferentes quebra-cabeças em pixel art, estilo recorrente em toda a interface do jogo. 
+    Cada puzzle tem uma pontuação calculada com base ao seu número de peças. Então você deve pensar bem em quais 
+    puzzles jogar, já que a pontuação pode não valer a pena.
    </p>
+   <p>
+    Os cinco primeiros aparecem no ranking global para todos verem. O objetivo é fazer com que as pessoas tenham [
+    vontade de jogar mais para ficarem alto no ranking, podendo acompanhar mudanças nele imediatamente.
+   </p>
+  <p>
+    Falando sobre mais elementos técnicos, eu utilizei duas bibliotecas js. A primeira foi a Anime,js, usada para as 
+    animações para as abas como menu e ranking aparecerem. A segunda foi a SweetAlert2, uma biblioteca muito boa e que
+    eu recomendo bastante. Ela transforma totalmente os window alerts do sistema. Todos as mensagens que aparecem 
+    na tela, como as boas-vindas e a aba de parabéns são window alerts alterados.
+  </p>
+  <p>
+    Agora o mais importante, os logins. Session Storage não era uma boa opção, pois ele só guarda os dados no dispositivo.
+    Eu queria um jogo online que pudesse ser jogado em múltiplos dispositivos aos mesmo tempo, então utilizei o 
+    firebase, site do google que te deixa utilizar um banco de dados gratuito. Depois precisei criar algumas funções
+    e ele já estava pronto.
+  </p>
+  <p>
+    Em conclusão, eu gostei bastante de fazer esse projeto. Me diverti bastante e agora com ele finalizado, me sinto 
+    bem e espero que mais algumas pessoas possam se divertir aqui. Enfim, chega de leitura. Você tem um ranking para subir! Vai lá!
+  </p>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
