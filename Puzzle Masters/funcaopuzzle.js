@@ -12,13 +12,11 @@ function carregarPagina(url) {
 
 window.carregarPagina = carregarPagina;
 
-//Seleção de peças
 let pecas = document.querySelectorAll(".peca");
 let chaveDoCodigo = document.querySelector("#chave");
 
 embaralha();
 
-let vetor;
 pecas.forEach(elemento => {
     elemento.addEventListener('click', () => {
         let numSelecionadas = document.querySelectorAll('.selecionado')
@@ -44,8 +42,6 @@ pecas.forEach(elemento => {
 
     })
 });
-
-//Troca de peças
 
 let troca = document.querySelector("#swap");
 troca.addEventListener('click', async () => {
@@ -75,8 +71,6 @@ troca.addEventListener('click', async () => {
         numSelecionadas[0].classList.remove('selecionado');
         numSelecionadas[1].classList.remove('selecionado');
 
-        //Verificar se as peças estão na posição correta
-
         let verificadorDeCorrecao = 0;
 
         let userLogado = sessionStorage.getItem("usuarioLogado");
@@ -98,22 +92,6 @@ troca.addEventListener('click', async () => {
         }
 
         let pontos = Number(sessionStorage.getItem("pontuacao")) || 0;
-
-        if (!userLogado) {
-            Swal.fire({
-                icon: "error",
-                title: "ERRO",
-                text: "Nenhum usuário logado!",
-                background: "#021826",
-                color: "#FCB62B",
-                confirmButtonText: "OK",
-                customClass: {
-                    popup: "retro-popup",
-                    confirmButton: "retro-button"
-                }
-            });
-            return;
-        }
 
 
 
@@ -171,12 +149,10 @@ troca.addEventListener('click', async () => {
 })
 
 
-//Embaralhar as peças
-
 function embaralha() {
     const numeroDeTrocas = 10 * pecas.length;
 
-    for (let troca = 0; troca < numeroDeTrocas; troca++) {
+    for (let i = 0; i < numeroDeTrocas; i++) {
 
         let peca1 = Math.floor(Math.random() * pecas.length);
         let peca2 = Math.floor(Math.random() * pecas.length);
