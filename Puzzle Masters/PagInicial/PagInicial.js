@@ -8,24 +8,23 @@ function carregarPagina(url) {
 
 
 let soundButton = document.querySelector("#soundLogo");
-let soundDiv = document.querySelector("#sound")
+let soundDiv = document.querySelector("#sound");
 
 let musica = new Audio("PagInicial-Sound.mp3");
 musica.loop = true;
 
+const listaDeSrc = [
+  "PagInicial-img/PagInicial-Mute.png",
+  "PagInicial-img/PagInicial-Unmute.png"
+];
 
 soundDiv.addEventListener('click', () => {
-  let listaDeSrc = [
-    "PagInicial-img/PagInicial-Mute.png",
-    "PagInicial-img/PagInicial-Unmute.png"
-  ]
 
   let srcAtual = soundButton.src.split("/").pop();
 
   if (srcAtual === "PagInicial-Mute.png") {
     soundButton.src = listaDeSrc[1];
     musica.play();
-    musica.volume = 1;
   }
   else {
     soundButton.src = listaDeSrc[0];
@@ -111,7 +110,7 @@ escondeMenu.addEventListener('click', ()=> mudaMenu(menu));
 
 let ranking = document.querySelector("#ranking");
 let revelaRanking = document.querySelector("#abreRanking");
-let escondeRanking = document. querySelector("#fechar-ranking")
+let escondeRanking = document.querySelector("#fechar-ranking")
 
 revelaRanking.addEventListener('click', ()=> mudaMenu(ranking));
 escondeRanking.addEventListener('click', ()=> mudaMenu(ranking))
