@@ -1,119 +1,754 @@
-function carregarPagina(url) {
-    document.getElementById("loader").classList.remove("desativado");
-    
-    setTimeout(() => {
-        window.location.href = url;
-    }, 800); 
-  }
-
-
-let soundButton = document.querySelector("#soundLogo");
-let soundDiv = document.querySelector("#sound");
-
-let musica = new Audio("PagInicial-Sound.mp3");
-musica.loop = true;
-
-const listaDeSrc = [
-  "PagInicial-img/PagInicial-Mute.png",
-  "PagInicial-img/PagInicial-Unmute.png"
-];
-
-soundDiv.addEventListener('click', () => {
-
-  let srcAtual = soundButton.src.split("/").pop();
-
-  if (srcAtual === "PagInicial-Mute.png") {
-    soundButton.src = listaDeSrc[1];
-    musica.play();
-  }
-  else {
-    soundButton.src = listaDeSrc[0];
-    musica.pause();
-  }
-});
-
-let desligaEstatica = document.querySelector("#buttonTV");
-let estatica = document.querySelector("#estatica");
-
-desligaEstatica.addEventListener('click', () => {
-  estatica.classList.toggle('desativado');
-})
-
-let revelaMenu = document.querySelector("#listaDePuzzles");
-let menu = document.querySelector("#menu-puzzles");
-let escondeMenu = document.querySelector("#fechar-menu");
-let bloqueio = document.querySelector("#bloqueio-clique");
-
-
-function animarMenu(e) {
-  e.classList.remove("desativado");
-
-  anime({
-    targets: e,
-    opacity: [0, 1],
-    scale: [
-      { value: 0.3, duration: 0 },
-      { value: 1.15, duration: 250 },
-      { value: 1.0, duration: 150 }
-    ],
-    borderColor: [
-      { value: "#FCB62B", duration: 80 },
-      { value: "#011423", duration: 80 }
-    ],
-    easing: "easeOutQuad",
-    duration: 400,
-    begin: () => {
-      e.style.pointerEvents = "auto";
-    }
-  });
-
-  bloqueio.classList.remove("desativado");
+html,
+body {
+    overflow: hidden;
+    font-size: 62.5%;
 }
 
-function fecharMenu(e) {
+body {
+    display: grid;
+    height: 100%;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(5, 1fr);
+    gap: 0px;
+    background-image: url(PagInicial-img/PagInicial-Fundo.png);
+    background-attachment: fixed;
+    background-repeat: no-repeat;
+    background-size: cover;
+}
 
-  anime({
-    targets: e,
-    opacity: [1, 0],
-    scale: [1, 0.3],
-    duration: 350,
-    easing: 'easeInQuad',
-    complete: () => {
-      e.classList.add("desativado");
-      e.style.pointerEvents = "none";
-    }
-  });
+#loader,
+#Tela-login {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    background-image: url(PagInicial-img/PagInicial-loadFundo.jpg);
+    background-size: cover;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px;
+    color: whitesmoke;
+    z-index: 12;
+    text-align: center;
+    align-content: center;
+}
 
-  bloqueio.classList.add("desativado");
+#Tela-login {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+#Tela-login img {
+    width: 30%;
+    min-width: 200px;
+}
+
+.campo {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 12px;
+    align-items: start;
+}
+
+.campo label {
+    margin-bottom: 5px;
+}
+
+.campo input {
+    width: 300px;
+    font-family: "VT323", monospace;
+    font-size: 32px;
+    padding: 6px;
+}
+
+#button-login {
+    background-color: #3ACFC5;
+    width: 16%;
+    min-width: fit-content;
+    height: 8%;
+    border: solid 4px #011423;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px;
+    color: #011423;
+    position: relative;
+    top: 0;
+    transition: top 0.5s ease;
+    box-shadow: 0px 6px 0px #011423;
+}
+
+.retro-popup {
+    border: 4px solid #FCB62B;
+    box-shadow: 0 0 0 4px #011423;
+    image-rendering: pixelated;
+    font-family: 'VT323', monospace !important;
+    font-size: 20px;
+}
+
+.swal2-icon {
+    color: #00FFE1 !important;
+    border-color: currentColor !important;
+    box-shadow: 0 0 6px currentColor !important;
+}
+
+.retro-button {
+    font-family: 'VT323', monospace !important;
+    font-size: 24px !important;
+    border: 3px solid #011423 !important;
+    box-shadow: 0px 4px 0px #011423 !important;
+    color: #011423 !important;
+}
+
+
+#loader img {
+    height: 20%;
+}
+
+#loader h1 {
+    margin-top: 10px;
+}
+
+#cabecalho {
+    grid-column: span 4 / span 4;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0% 15%;
+
+}
+
+#blank1 {
+    grid-row: span 3 / span 3;
+    grid-row-start: 2;
+}
+
+#boxLogo {
+    grid-column: span 2 / span 2;
+    grid-row: span 2 / span 2;
+    grid-row-start: 2;
+}
+
+#blank2 {
+    grid-row: span 3 / span 3;
+    grid-column-start: 4;
+    grid-row-start: 2;
+}
+
+#boxDeBotoes {
+    grid-column: span 2 / span 2;
+    grid-column-start: 2;
+    grid-row-start: 4;
+    display: flex;
+    justify-content: space-evenly;
+}
+
+#Left-corner {
+    position: relative;
+    grid-column: span 2 / span 2;
+    grid-row-start: 5;
+    display: flex;
+    justify-content: center;
+}
+
+#Right-corner {
+    grid-column: span 2 / span 2;
+    grid-column-start: 3;
+    grid-row-start: 5;
+}
+
+#logo {
+    display: block;
+    margin: auto;
+    width: 70%;
+}
+
+#listaDePuzzles,
+#abreRanking {
+    background-color: #3ACFC5;
+    width: 35%;
+    height: 50%;
+    border: solid 4px #011423;
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 50px;
+    color: #011423;
+    position: relative;
+    top: 0;
+    transition: top 0.5s ease;
+    box-shadow: 0px 6px 0px #011423;
+
+}
+
+button:hover {
+    top: -3px !important;
+    box-shadow: 0px 8px 0px #011423 !important;
+}
+
+button:active {
+    top: 3px !important;
+    box-shadow: 0px 2px 0px #011423 !important;
+    background-color: #FCB62B !important;
 }
 
 
 
-function mudaMenu(e) {
-  const estavaAtivo = !e.classList.contains("desativado");
-
-  document.querySelectorAll(".menu").forEach(menu => {
-    if (!menu.classList.contains("desativado") && menu !== e) {
-      fecharMenu(menu);
-    }
-  });
-
-  if (estavaAtivo) {
-    fecharMenu(e);
-  } else {
-    animarMenu(e);
-  }
+.miniButton {
+    width: 10%;
+    height: 60%;
+    background-color: #3ACFC5;
+    border: solid 4px #011423;
+    position: relative;
+    box-shadow: 0px 6px 0px #011423;
 }
 
-revelaMenu.addEventListener('click', ()=> mudaMenu(menu));
-escondeMenu.addEventListener('click', ()=> mudaMenu(menu));
+.miniButton img {
+    width: 90%;
+}
 
-let ranking = document.querySelector("#ranking");
-let revelaRanking = document.querySelector("#abreRanking");
-let escondeRanking = document.querySelector("#fechar-ranking")
+#exit img {
+    width: 70% !important;
+}
 
-revelaRanking.addEventListener('click', ()=> mudaMenu(ranking));
-escondeRanking.addEventListener('click', ()=> mudaMenu(ranking))
+#buttonTV {
+    width: 15%;
+    height: 100px;
+    position: relative;
+    right: 80px;
+}
+
+#buttonTV img {
+    width: 70%;
+}
+
+.desativado {
+    opacity: 0;
+    pointer-events: none;
+}
+
+#menu-puzzles {
+    position: absolute;
+    width: 80%;
+    height: 90%;
+    background-color: #3ACFC5;
+    align-self: center;
+    justify-self: center;
+    bottom: 20px;
+    border: solid 10px #011423;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.3);
+    will-change: transform, opacity;
+}
+
+
+#bloqueio-clique {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: transparent;
+    z-index: 8;
+}
+
+.menu-head {
+    justify-self: center;
+    height: 10%;
+    width: 95%;
+    display: flex;
+    justify-content:space-between;
+}
+
+#fechar-menu, #fechar-ranking, #abrir-info {
+    position: relative;
+    height: 85%;
+    margin: 10px 20px;
+}
+
+#fechar-menu:hover,
+.puzzle-frames img:hover, #fechar-ranking:hover, #abrir-info:hover {
+    top: -3px !important;
+}
+
+#fechar-menu:active,
+.puzzle-frames img:active, #fechar-ranking:active, #abrir-info:active {
+    top: 3px !important;
+}
+
+
+#puzzles {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    grid-template-rows: repeat(4, 110px);
+    margin-top: 5%;
+    margin-left: 2.3%;
+    height: 80%;
+    width: 100%;
+    gap: 30px;
+}
+
+#P1,
+#P2,
+#P3,
+#P4 {
+    grid-row: span 2 / span 2;
+}
+
+
+#P5,
+#P6,
+#P7,
+#P8 {
+    grid-row: span 2 / span 2;
+    grid-row-start: 3;
+}
+
+.puzzle-frames {
+    width: 80%;
+    height: 100%;
+}
+
+.puzzle-frames img {
+    width: 100%;
+    border: solid 6px;
+    position: relative;
+    object-fit: cover;
+}
+
+#P1 img {
+    border-color: whitesmoke;
+}
+
+#P2 img,
+#P3 img {
+    border-color: green;
+}
+
+#P4 img,
+#P5 img {
+    border-color: #FCB62B;
+}
+
+#P6 img,
+#P7 img {
+    border-color: red;
+}
+
+#P8 img {
+    border-color: black;
+}
+
+
+#menu-puzzles {
+    overflow-y: auto;
+    overflow-x: hidden;
+}
+
+
+#ranking {
+    position: absolute;
+    width: 40%;
+    height: 90%;
+    background-color: #3ACFC5;
+    align-self: center;
+    justify-self: center;
+    bottom: 20px;
+    border: solid 10px #011423;
+    z-index: 10;
+    opacity: 0;
+    pointer-events: none;
+    transform: scale(0.3);
+    will-change: transform, opacity;
+}
+
+#rankingPlayers{
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+    font-size: 80px;
+    justify-self: start;
+    list-style: none;
+    margin-top: 5%;
+    justify-self: center;
+    padding: 0;
+    margin-top: 5%;
+    width: 95%;
+}
+
+#rankingPlayers li {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  margin-bottom: 12px;
+  width: 100%;
+}
+
+
+.pontos{
+    color: #FCB62B;
+    background-color: #011423;
+    border-radius: 10%;
+}
+
+.nome {
+  max-width: 100%;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
 
 
 
+#primeiro{
+    background-color: #FCB62B;
+    border-radius: 10px;
+}
+
+
+#body-info{
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+#descricao{
+    height: 90vh;
+    width: 80vw;
+    background-color: rgb(245, 245, 245, 0.55);
+    font-family: "VT323", monospace;
+    font-weight: 400;
+    font-style: normal;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: scroll;
+    overflow-x: hidden;
+}
+
+#descricao h1{
+    font-size: 80px;
+    margin: 0px;
+}
+#descricao p{
+    font-size: 30px;
+    margin: 5px 20px;
+    text-align: justify;
+
+}
+
+
+.buttonSetting {
+    width: 80px;
+    height: 80px;
+    background-color: #3ACFC5;
+    border: solid 4px #011423;
+    position: relative;
+    box-shadow: 0px 6px 0px #011423;
+    margin: 10px;
+    align-self: start;
+    margin-left: 10px;
+}
+
+.buttonSetting img {
+    height: 80%;
+}
+
+#estatica {
+    pointer-events: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+}
+
+#estatica::before,
+#estatica::after {
+    content: "";
+    position: absolute;
+    top: -100%;
+    left: 0;
+    width: 100%;
+    height: 200%;
+    background-image:
+        linear-gradient(transparent 93%, rgba(255, 255, 255, 0.4) 100%);
+    background-size: 20px 20px;
+    animation: oldTV 4s linear infinite;
+}
+
+
+#estatica::after {
+    animation-delay: -0.35s;
+}
+
+@keyframes oldTV {
+    from {
+        transform: translateY(0);
+    }
+
+    to {
+        transform: translateY(100%);
+    }
+}
+
+
+@media (max-width: 1170px) {
+
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: start;
+        gap: 20px;
+        background-size: cover;
+        background-attachment: fixed;
+    }
+
+    #Left-corner {
+        position: relative;
+        top: 0px;
+    }
+
+    #cabecalho {
+        padding: 0 10%;
+    }
+
+
+
+    #sound,
+    #exit {
+        width: 12%;
+    }
+
+    #buttonTV {
+        width: 20%;
+        position: static;
+    }
+
+    #boxLogo {
+        grid-column: span 2;
+        grid-row-start: auto;
+    }
+
+    #logo {
+        width: 80%;
+    }
+
+    #boxDeBotoes {
+        grid-column: span 2;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        gap: 20px;
+        width: 50%;
+    }
+
+    #listaDePuzzles,
+    #abreRanking {
+        width: 100%;
+        height: auto;
+        font-size: 40px;
+    }
+
+
+    #puzzles {
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-template-rows: repeat(6, 1fr);
+        gap: 37px;
+        margin-top: 2%;
+    }
+
+    #P7,
+    #P8 {
+        grid-row: span 2 / span 2;
+        grid-row-start: 5;
+    }
+
+    #rankingPlayers{
+        font-size: 55px;
+    }
+
+    #rankingPlayers li{
+        margin-bottom: 40px;
+    }
+}
+
+
+@media (max-width: 900px) {
+    #ranking{
+        width: 70%;
+    }
+    .buttonSetting {
+        width: 80px;
+        height: 70px;
+    }
+}
+
+
+@media (max-width: 689px) {
+    #cabecalho {
+        width: 100%;
+        padding: 0 10%;
+    }
+
+    #sound,
+    #exit {
+        width: 80px;
+    }
+
+    #ranking{
+        width: 80%;
+    }
+}
+
+@media (max-width: 450px) {
+
+    body {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: auto;
+        padding-bottom: 40px;
+        gap: 15px;
+        background-attachment: fixed;
+        background-size: cover;
+    }
+
+    #puzzles {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+        grid-template-rows: repeat(8, 1fr);
+        gap: 0px;
+        height: auto;
+    }
+
+    #menu-puzzles {
+        height: 90vh;
+        overflow-y: auto;
+        overflow-x: hidden;
+    }
+
+    #P3,
+    #P4 {
+        grid-row: span 2 / span 2;
+        grid-row-start: 3;
+    }
+
+    #P5,
+    #P6 {
+        grid-row: span 2 / span 2;
+        grid-row-start: 5;
+    }
+
+    #P7,
+    #P8 {
+        grid-row: span 2 / span 2;
+        grid-row-start: 7;
+    }
+
+    .puzzle-frames {
+        height: 100%;
+        min-height: 150px;
+    }
+
+    .puzzle-frames {
+        object-fit: cover;
+    }
+
+    #fechar-menu, #abrir-info {
+        height: 5vh !important;
+        margin: 5px 10px;
+    }
+
+
+    #Left-corner {
+        position: static;
+    }
+
+    #cabecalho {
+        width: 100%;
+        padding: 0px 20px;
+    }
+
+
+    #sound,
+    #exit {
+        width: 20% !important;
+    }
+
+    #boxLogo {
+        width: 80%;
+        display: flex;
+        justify-content: center;
+    }
+
+    #logo {
+        width: 100%;
+    }
+
+    #boxDeBotoes {
+        width: 80%;
+        flex-direction: column;
+        align-items: center;
+        gap: 25px;
+    }
+
+    #listaDePuzzles,
+    #abreRanking {
+        width: 70%;
+        height: 60px;
+        font-size: 36px;
+    }
+
+    #buttonTV {
+        width: 17%;
+        height: 60px;
+    }
+
+    #rankingPlayers{
+        font-size: 40px;
+    }
+
+    #descricao h1{
+    font-size: 60px;
+    margin: 0px;
+    }
+
+    #descricao p{
+    font-size: 25px;
+    margin: 10px 20px;
+    text-align: justify;
+
+    }
+    .buttonSetting {
+        height: 65px;
+        width: 20%;
+    }
+
+}
+
+@media (max-width: 419px) {
+    #buttonTV {
+        width: 80px;
+        height: 100%;
+    }
+
+    #loader {
+        font-size: 40px;
+    }
+
+    #descricao p{
+    margin: 15px 20px;
+    text-align: justify;
+
+    }
+}
